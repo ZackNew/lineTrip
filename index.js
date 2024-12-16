@@ -13,11 +13,6 @@ const TRIPADVISOR_API_KEY = process.env.API_KEY;
 
 app.use(cors());
 
-app.get("/", async (req, res) => {
-  console.log(process.env.API_KEY);
-  res.json(process.env.API_KEY);
-});
-
 app.get("/api/tripadvisor/search", async (req, res) => {
   try {
     const { searchQuery = "addis ababa", language = "en" } = req.query;
