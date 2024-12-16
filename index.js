@@ -21,7 +21,7 @@ app.get("/api/tripadvisor/search", async (req, res) => {
       searchQuery
     )}&language=${language}&key=${TRIPADVISOR_API_KEY}`;
 
-    console.log(url);
+    console.error(url);
 
     const response = await fetch(url, {
       method: "GET",
