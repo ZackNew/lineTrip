@@ -27,7 +27,11 @@ app.get("/api/tripadvisor/search", async (req, res) => {
 
     const response = await fetch(url, {
       method: "GET",
-      headers: { accept: "application/json" },
+      headers: {
+        accept: "application/json",
+        Referer: "https://line-trip-be.vercel.app",
+        Origin: "https://line-trip-be.vercel.app",
+      },
     });
     console.error("Headers Sent:", response.headers);
     console.error(response);
