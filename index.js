@@ -55,12 +55,16 @@ app.get("/api/tripadvisor/detail", async (req, res) => {
   try {
     const { locationId } = req.query;
 
-    const url = `https://api.content.tripadvisor.com/api/v1/location/${locationId}/details?language=en&currency=ETB&key=${TRIPADVISOR_API_KEY}`;
-    const imageUrl = `https://api.content.tripadvisor.com/api/v1/location/${locationId}/photos?language=en&key=${TRIPADVISOR_API_KEY}`;
+    const url = `https://api.content.tripadvisor.com/api/v1/location/${locationId}/details?language=en&currency=ETB&key=${"B4AF6CA23C674FA9998239496279832B"}`;
+    const imageUrl = `https://api.content.tripadvisor.com/api/v1/location/${locationId}/photos?language=en&key=${"B4AF6CA23C674FA9998239496279832B"}`;
 
     const response = await fetch(url, {
       method: "GET",
-      headers: { accept: "application/json" },
+      headers: {
+        accept: "application/json",
+        Referer: "https://line-trip-be.vercel.app",
+        Origin: "https://line-trip-be.vercel.app",
+      },
     });
     const imageResponse = await fetch(imageUrl, {
       method: "GET",
