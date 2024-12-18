@@ -15,30 +15,30 @@ app.use(cors());
 
 app.get("/api/tripadvisor/search", async (req, res) => {
   try {
-    const api = `${process.env.API_KEY} this is key`;
-    res.json(api);
-    // const { searchQuery = "addis ababa", language = "en" } = req.query;
+    // const api = `${process.env.API_KEY} this is key`;
+    // res.json(api);
+    const { searchQuery = "addis ababa", language = "en" } = req.query;
 
-    // const url = `https://api.content.tripadvisor.com/api/v1/location/search?searchQuery=${encodeURIComponent(
-    //   searchQuery
-    // )}&language=${language}&key=${TRIPADVISOR_API_KEY}`;
+    const url = `https://api.content.tripadvisor.com/api/v1/location/search?searchQuery=${encodeURIComponent(
+      searchQuery
+    )}&language=${language}&key=${"B4AF6CA23C674FA9998239496279832B"}`;
 
-    // console.error(url);
+    console.error(url);
 
-    // const response = await fetch(url, {
-    //   method: "GET",
-    //   headers: { accept: "application/json" },
-    // });
+    const response = await fetch(url, {
+      method: "GET",
+      headers: { accept: "application/json" },
+    });
 
-    // if (!response.ok) {
-    //   return res
-    //     .status(response.status)
-    //     .json({ error: "Failed to fetch data from TripAdvisor" });
-    // }
+    if (!response.ok) {
+      return res
+        .status(response.status)
+        .json({ error: "Failed to fetch data from TripAdvisor" });
+    }
 
-    // const data = await response.json();
+    const data = await response.json();
 
-    // res.json(data);
+    res.json(data);
   } catch (error) {
     console.error("Error fetching data from TripAdvisor:", error);
     res.status(500).json({ error: "Internal server error" });
