@@ -15,15 +15,11 @@ app.use(cors());
 
 app.get("/api/tripadvisor/search", async (req, res) => {
   try {
-    // const api = `${process.env.API_KEY} this is key`;
-    // res.json(api);
     const { searchQuery = "addis ababa", language = "en" } = req.query;
 
     const url = `https://api.content.tripadvisor.com/api/v1/location/search?searchQuery=${encodeURIComponent(
       searchQuery
     )}&language=${language}&key=${"B4AF6CA23C674FA9998239496279832B"}`;
-
-    console.error(url);
 
     const response = await fetch(url, {
       method: "GET",
@@ -33,8 +29,6 @@ app.get("/api/tripadvisor/search", async (req, res) => {
         Origin: "https://line-trip-be.vercel.app",
       },
     });
-    console.error("Headers Sent:", response.headers);
-    console.error(response);
 
     if (!response.ok) {
       return res
@@ -70,6 +64,9 @@ app.get("/api/tripadvisor/detail", async (req, res) => {
       method: "GET",
       headers: { accept: "application/json" },
     });
+
+    console.log("response:", response);
+    console.log("imageResponse:", imageResponse);
 
     if (!response.ok && !imageResponse.ok) {
       return res
