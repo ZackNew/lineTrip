@@ -62,7 +62,11 @@ app.get("/api/tripadvisor/detail", async (req, res) => {
     });
     const imageResponse = await fetch(imageUrl, {
       method: "GET",
-      headers: { accept: "application/json" },
+      headers: {
+        accept: "application/json",
+        Referer: "https://line-trip-be.vercel.app",
+        Origin: "https://line-trip-be.vercel.app",
+      },
     });
 
     console.log("response:", response);
