@@ -15,7 +15,8 @@ app.use(cors());
 
 app.get("/api/tripadvisor/search", async (req, res) => {
   try {
-    res.json(process.env.API_KEY);
+    const api = `${process.env.API_KEY} this is key`;
+    res.json(api);
     // const { searchQuery = "addis ababa", language = "en" } = req.query;
 
     // const url = `https://api.content.tripadvisor.com/api/v1/location/search?searchQuery=${encodeURIComponent(
