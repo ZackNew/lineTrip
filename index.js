@@ -29,7 +29,7 @@ app.get("/api/tripadvisor/search", async (req, res) => {
       method: "GET",
       headers: { accept: "application/json" },
     });
-
+    console.error("Headers Sent:", response.headers);
     console.error(response);
 
     if (!response.ok) {
